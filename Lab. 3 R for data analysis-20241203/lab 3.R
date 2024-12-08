@@ -127,17 +127,55 @@ sex_Cpain$estimate
 x <- seq(-4,4,0.01)
 f <- dnorm(x) # probability density function
 
-plot(x,f,pch=19)
-# b) Draw 1000 random values from the standard normal distribution. 
+plot(x,f,pch=10)
+# b) Draw 1000 random values from the standard normal distribution.
+d = rnorm(1000)
+plot(d)
 # c) Add the histogram with data generated in point b) to the plot from point a). 
+
+hist(d,30,add=TRUE,col=rgb(0,0,1, alpha=0.5), freq = F)
+hist(d)
+# d- data, 30- number of bins on the histogram, add- allows to add/combine histogram and other plots, 
+# freq = F:This tells R to plot the density of the data instead of the frequency
+
+
 # d) Draw another 1000 random values from the normal distribution with a mean of 1 and 
 # a standard deviation of 2. 
+c = rnorm(1000, mean= 1, sd =2)
+hist(c, col="red")
+#plot(density(c))
+
+
 # e) Present the data generated in points b) and d) at two separate histograms with the same 
 # ranges at both axes. What difference can you see?
-  
+hist(c, col="red")
+hist(d)
 
 
+#TASK 4
+# Let X be a normal random variable with mean value equal to 0 and standard deviation equal to 1. 
+x <- seq(-3,3,0.01)
+f <- dnorm(x) # probability density function
+plot(x,f,pch=19)
+# Calculate: 
+# a) P(X<-0.7) 
+pnorm(-0.7)
+# b) P(X>-0.34) 
+1-pnorm(-0.34)
+# c) P(X<0.68) 
+1-pnorm(0.68)
+# d) P(X>0.13) 
+1-pnorm(0.13)
+# e) x that P(X>x) =0.68
+qnorm(0.68)
 
+# TASK 5
+# Let X be a normal random variable with a mean value equal to 2 and a standard deviation equal 
+# to 5. Calculate:  
+
+# a) P(X<-3) 
+# b) P(X<6) 
+# c) P(-2<X<5)
 
 
 
