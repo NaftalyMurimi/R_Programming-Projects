@@ -1,0 +1,77 @@
+---
+title: "Lecture 3\nR Markdown"
+author: "Joanna Tobiasz"
+date: 'October 22, 2024'
+# output: html_document
+# output: pdf_document
+output: beamer_presentation
+---
+
+Here we print the command and the output:
+
+```{r}
+print("Hello world!")
+```
+
+This will be only the output:
+
+```{r, echo=FALSE}
+print("Hello world!")
+```
+
+Unevaluated command:
+
+```{r, eval=FALSE}
+print("Hello world!")
+```
+
+<!-- Presentation slide break -->
+
+------------------------------------------------------------------------
+
+Results not printed:
+
+```{r, results='hide'}
+print("Hello world!")
+```
+
+```{r}
+library(ggcorrplot)
+```
+
+Message suppresion:
+
+```{r, message=FALSE}
+library(ggcorrplot)
+```
+
+<!-- PDF page break -->
+
+<!-- \pagebreak -->
+
+### Plots
+
+Log-function plot:
+
+```{r, echo=FALSE}
+plot(1:50,log(1:50))
+```
+
+<!-- Presentation slide break -->
+
+------------------------------------------------------------------------
+
+Plot with modified size parameters:
+
+```{r, echo=FALSE, fig.width=5, fig.height=3}
+plot(1:50,log(1:50))
+```
+
+### Table
+
+```{r, echo=FALSE}
+library(knitr)
+library(ISLR)
+data(Auto)
+kable(Auto[1:5,1:4], caption = "Auto dataset")
+```

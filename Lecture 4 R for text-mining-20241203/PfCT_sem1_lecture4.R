@@ -60,3 +60,39 @@ sequence
 sequence <- gsub(" ", "", sequence)
 sequence
 chartr("atcg", "tagc", sequence)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+x <- "This lecture is poor"
+chartr("pr", "gd", x)
+a <- "Mississippi contains a palindrome ississi."
+regexpr("iss", a)

@@ -172,11 +172,14 @@ qnorm(0.68)
 # TASK 5
 # Let X be a normal random variable with a mean value equal to 2 and a standard deviation equal 
 # to 5. Calculate:  
-
 # a) P(X<-3) 
+# pnorm(-3)
+pnorm(-3, mean=2, sd=5)
 # b) P(X<6) 
-# c) P(-2<X<5)
-
+pnorm(6, mean=2, sd=5)
+# c) P(-2<X<5) => P(X>-2), P(X<5)
+1-(pnorm(-2, mean=2, sd=5) + 1-pnorm(5, mean=2, sd=5))
+pnorm(5, mean = 2, sd = 5) - pnorm(-2, mean = 2, sd = 5)
 
 
 

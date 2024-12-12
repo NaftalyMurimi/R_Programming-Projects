@@ -9,33 +9,33 @@ rm(list = ls()) # cleaning the workspace
 ## From Excel sheet ==========================================================
 install.packages("openxlsx")  # Install the package
 library(openxlsx)             # Load the package
-library(openxlsx)
 
-myiris <- read.xlsx(xlsxFile = "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 3 R for data analysis-20241203/iris2_dataset.xlsx")
+MyData <- "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 3 R for data analysis-20241203/iris2_dataset.xlsx"
+myiris <- read.xlsx(xlsxFile = MyData)
 str(myiris)
 head(myiris)
     
-myiris_cols <- read.xlsx(xlsxFile = "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 3 R for data analysis-20241203/iris2_dataset.xlsx", colNames = F) # wrong way: no column names
+myiris_cols <- read.xlsx(xlsxFile = MyData, colNames = F) # wrong way: no column names
 str(myiris_cols)
 head(myiris_cols)
 
-myiris_row <- read.xlsx(xlsxFile = "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 3 R for data analysis-20241203/iris2_dataset.xlsx", rowNames = T) # wrong way: first values as row names
+myiris_row <- read.xlsx(xlsxFile = MyData , rowNames = T) # wrong way: first values as row names
 
-myiris3 <- read.xlsx(xlsxFile = "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 3 R for data analysis-20241203/iris2_dataset.xlsx", startRow = 3, colNames = F) # starting from the 3rd row
+myiris3 <- read.xlsx(xlsxFile =  MyData, startRow = 3, colNames = F) # starting from the 3rd row
 str(myiris3)
 head(myiris3)
 
 
 ## From CSV/text file ==========================================================
-a= 
-nci <- read.csv(file = "NCI.csv", header = T)
+MyNci <- "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 3 R for data analysis-20241203/NCI.csv"
+nci <- read.csv(file = MyNci, header = T)
 str(nci)
 
-nci2 <- read.table(file = "NCI.csv", header = T) # wrong way: we need to set comma as the separator
+nci2 <- read.table(file = MyNci, header = T) # wrong way: we need to set comma as the separator
 str(nci2)
 colnames(nci2)
 
-nci3 <- read.table(file = "NCI.csv", header = T, sep = ',')
+nci3 <- read.table(file = MyNci, header = T, sep = ',')
 str(nci3)
 
 identical(nci, nci3) # are they identical?
