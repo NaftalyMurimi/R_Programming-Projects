@@ -46,3 +46,13 @@ unique(p)
 H<-tolower(Mytext)
 H
 # l) Export the resulting text to a TXT file. 
+
+
+
+
+
+
+
+
+
+# TASK 2
