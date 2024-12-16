@@ -7,8 +7,8 @@ rm(list = ls()) # cleaning the workspace
 # Simple string analysis --------------------------------------------------
 
 library("seqinr")
-
-sars <- read.fasta(file = 'sarscov2.fasta')
+da= "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 4 R for text-mining-20241203/sarscov2.fasta"
+sars <- read.fasta(file = da)
 
 length(sars[[1]])
 
@@ -23,21 +23,24 @@ count(sars[[1]], 3)
 
 
 # Regular expressions -------------------------------------------------------------
-
-load("genbank.RData") # loading the data
+g= "C:/Users/nafmu/Desktop/Cognitive Tech/R/Lecture 4 R for text-mining-20241203/genbank.RData"
+load(g) # loading the data
 
 head(genbank, 20)
 
 gb <- paste(genbank, collapse = "\n")
-accPos <- regexec("ACCESSION\\s+(\\S{6})", gb) # "ACCESSION", one or more white spaces, and 6 non-white spaces
+accPos <- regexec("ACCESSION\\s+(\\S{6})", gb) 
+# "ACCESSION", one or more white spaces, and 6 non-white spaces
 accession <- regmatches(gb, accPos)
 accession
 
-defPos <- regexec("DEFINITION\\s+((\\S| )+\\.)", gb) # "DEFINITION", one or more white spaces, one or more non-white spaces or space, a dot.
+defPos <- regexec("DEFINITION\\s+((\\S| )+\\.)", gb) 
+# "DEFINITION", one or more white spaces, one or more non-white spaces or space, a dot.
 definition <- regmatches(gb, defPos)
 definition
 
-defPos <- regexec("ORGANISM\\s+((\\S| )+)", gb) # "ORGANISM", one or more white spaces, one or more non-white spaces or space.
+defPos <- regexec("ORGANISM\\s+((\\S| )+)", gb) 
+# "ORGANISM", one or more white spaces, one or more non-white spaces or space.
 organism <- regmatches(gb, defPos)
 organism
 
@@ -48,7 +51,8 @@ medline
 seqPos <- gregexpr("ORIGIN.+$",gb)  # "ORIGIN", one or more any characters, end of a line.
 sequence <- regmatches(gb, seqPos)
 sequence
-seqPos <- gregexpr("\\d+(c|t|g|a| )+\n", sequence[[1]]) # one or more any digits, one or more characters (c, t, g, a, or a space), new line.
+seqPos <- gregexpr("\\d+(c|t|g|a| )+\n", sequence[[1]]) 
+# one or more any digits, one or more characters (c, t, g, a, or a space), new line.
 sequence <- regmatches(sequence[[1]], seqPos)
 sequence
 seqPos <- gregexpr("( |a|t|c|g)+", sequence[[1]]) # one or more characters (a space, a, t, c, g).

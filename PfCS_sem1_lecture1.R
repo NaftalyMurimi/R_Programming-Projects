@@ -21,9 +21,9 @@ s = 'abc'
 print(i/4L)      # 2.5 - floating-point division
 print(i %/% 4)	 # 2 - integer division
 print(i/4.0)     # 2.5
-print(c(i,x,s)) # 10 10 abc
+print(c(i,x,s)) # 10 40 abc
 print(paste0(s,'xyz'))  # abcxyz
-print(paste0(rep(s,2))) # abcabc
+print(paste0(rep(s,45))) # abcabc
 print(is.integer(i)) # True
 print(typeof(s)=='logical') # False
 q = as.integer(3.7) # narrowing conversion
@@ -55,34 +55,50 @@ A | B # per-element logical operator
 # - can store any type of data
 # - all elements have to be of same (basic) type
 
-V = c(1, 2, 3, 4)     # four-element numeric vector
+V = c(9, 2, 3, 4)     # four-element numeric vector
+V
+typeof(V)
 U = c(c(1,2),c(2,4))  # another four-element numeric vector
-
-
+U
+typeof(U)
 X = c('abc', 'pqr', 'abracadabra')  # chr vector
+X
+typeof(X)
 Y = c(123, TRUE, 'xyz')             # type conversion: chr vector
+Y
+typeof(Y)
 XY = c(X, Y)                        # six element vector
+XY
 
 a = V[1]    # get an element
+a
 V[3] = 10   # set an element
+V
 V[10] = 15  # automatic extension (unknown values filled with NA)
+V
 is.na(V[5])
 length(V)
 length(V) = 100 # extension
+V
 X[length(X)] = 12 # set the last element
-
+X
 W = V[c(1,3)] # get a subvector (copy)
+W
 W[1] = 3.14   # does not modify V
-
+W
 Z = c(1L, 2L)     # integer vector
+Z
 Z[1] = 6.7        # type conversion: numeric
+Z
 Z[2] = 'qwerty'   # type conversion: chr
-
+Z
 
 
 # logical vector
 I = (X == Y)
+I
 J = (X == Z)
+J
 
 # check if all/any elements are true
 all(I)
@@ -105,8 +121,11 @@ c(3, 5) %in% V
 names(V) = c("A", "B", "C") # set names
 print(V)
 x = V["B"]                  # get named number
+x
+typeof(x)
 y = V[["B"]]                # get unnamed number
-
+y
+typeof(y)
 
 
 
@@ -125,9 +144,11 @@ A = matrix(data=c(1,2,3,4), nrow=2, ncol=2)                 # 2D 2x2 float array
 B = matrix(data=c(1L,2L,3L,4L), nrow=2, ncol=2, byrow=TRUE) # 2D 2x2 integer array, elements initialized by rows (always stored by columns)
 print(A)
 print(B)
+print(B[2,2])
 D = matrix(data=c(1,2), nrow=1, ncol=2)               # 2D 1x2 row vector
 E = matrix(data=c(1,2), nrow=2, ncol=1)               # 2D 2x1 column vector
-F = array(data=seq(1,8), dim = c(2,2,2))    # 3D 2x2x2 array
+F = array(data=seq(1,8), dim = c(2,2,4))    # 3D 2x2x2 array
+E = matrix(data=seq(1,8), dim = c(2,2,2))
 print(F)
 
 
@@ -135,12 +156,13 @@ print(F)
 U = matrix(nrow=2, ncol=3)          # 2x3 NA array (float)
 Z = matrix(data=0, nrow=2, ncol=3)  # 2x3 zeros array (float)
 O = array(data=1, dim = c(1,2,3))   # 1x2x3 ones array (float)
-I = diag(3)                         # 3x3 identity array (float)
-
+I = diag(4)                         # 3x3 identity array (float)
+typeof((I))
 # random matrices
 m = 5
 n = 3
 U = matrix(data=runif(m*n,100,200), nrow=m, ncol=n) # m-by-n array, uniform distribution [100,200]
+matrix(data=runif(300,1,20), nrow=4, ncol=4)
 N = matrix(data=rnorm(m*n,2,10), nrow=m, ncol=n)    # m-by-n array, normal distribution (2,10)
 
 # Accessing elements
@@ -285,6 +307,7 @@ any(duplicated(iris)) # is any row duplicated?
 which(duplicated(iris)) # which row is duplicated?
 
 duplicated(iris$Petal.Length) # duplicated petal lengths
+which(duplicated(iris$Petal.Length))
 
 max(iris$Petal.Width) # maximal value of petal width
 which.max(iris$Petal.Width) # which observation has a maximal value of petal width?

@@ -125,11 +125,11 @@ library(ISLR)
 data(Auto)
 attach(Auto)
 
-sAuto <- subset(Auto, cylinders >=6)
+sAuto <- subset(Auto, cylinders)
 
 # t-test
 tt <- t.test(horsepower~cylinders, data=sAuto)
-
+#tt <- t.test(cylinders~horsepower, data=sAuto)
 tt$statistic
 tt$p.value # There is a significant difference in horsepower between cars with 6 and 8 cylinders
 

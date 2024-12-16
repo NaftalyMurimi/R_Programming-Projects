@@ -9,7 +9,7 @@ rm(list = ls()) # cleaning the workspace
 # apply
 M <- matrix(1:16, nrow = 4, ncol = 4)
 M
-apply(M, 2, min)
+apply(M, 1, min)
 
 # lapply
 L <- list(a = 1, b = 1:3, c = 10:100) 
