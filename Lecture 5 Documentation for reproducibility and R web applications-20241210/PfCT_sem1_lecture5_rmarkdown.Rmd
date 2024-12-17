@@ -39,7 +39,7 @@ print("Hello world!")
 library(ggcorrplot)
 ```
 
-Message suppresion:
+Message suppression:
 
 ```{r, message=FALSE}
 library(ggcorrplot)
@@ -52,6 +52,14 @@ library(ggcorrplot)
 ### Plots
 
 Log-function plot:
+
+```{r, echo=FALSE}
+```
+
+
+```{r, echo=FALSE}
+```
+
 
 ```{r, echo=FALSE}
 plot(1:50,log(1:50))
@@ -75,3 +83,8 @@ library(ISLR)
 data(Auto)
 kable(Auto[1:5,1:4], caption = "Auto dataset")
 ```
+```{r}
+print("End of class")
+
+```
+

@@ -1,0 +1,79 @@
+---
+title: "Lab 5"
+author: "naftali"
+date: "2024-12-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load data
+A summary of the basic statistics concerning the players' entire career.
+Hint: Names of columns concerning the entire career start with “C”
+```{r Hitters data}
+library(ISLR)
+data(Hitters)
+summary(Hitters)
+summary(Hitters[,8:14])
+str(Hitters)
+```
+
+## scatter plot
+
+A scatter plot with two panels created in ggplot2 with the players' salaries in relation
+to the number of runs, where dots should be coloured by league and one panel should show
+the E division, the other the W division. The black-white theme should be used and the
+Dark2 colour palette.
+
+```{r player salaries, echo=FALSE, message=FALSE}
+library(ggplot2)
+
+ggplot(Hitters, aes(x=Runs, y=Salary, colour=League)) +
+  geom_point()+
+  facet_wrap(~Division)+
+  scale_colour_brewer(palette="Dark2")+
+  theme_bw()
+```
+## violin plot
+A violin plot with two panels created in ggplot2 with the players' number of runs
+in different divisions. One panel should show the A league, the other the N league.
+The plots should be coloured according to the division, with a transparency level equal
+to 0.8. The light theme (theme_light) should be used and the Set1 colour palette
+```{r violin}
+ggplot(Hitters, aes( Division,Runs,fill=Division)) +
+  geom_violin( trim=FALSE ,alpha=0.8) +
+  scale_fill_brewer(palette="Set1") +
+  facet_wrap(~League)+
+  theme_light()
+```
+# table summary
+2x2 table summarising the number of players in the leagues and divisions
+```{r table summary}
+a= table(Hitters$League, Hitters$Division)
+kable(a, caption = "League Vs Division")
+```
+# Table 2
+A 2x2 table summarising the number of players in the leagues at the end of 1986 (League)
+and the beginning of 1987 (NewLeague).
+```{r table summary 2}
+kable(table(Hitters$League, Hitters$NewLeague), caption = "League Vs Division")
+```
+# Statistical test
+Statistical test results verifying the association between leagues at the end of 1986
+(League) and the beginning of 1987 (NewLeague).
+```{r Statistical test, message= FALSE, eval=FALSE}
+Result<- t.test(Hitters$League~ Hitters$NewLeague, data=Hitters)
+Result$statistic
+Result$p.value
+
+```
+```{r}
+tb = table(Hitters$League, Hitters$NewLeague)
+tb
+results <- fisher.test(tb) 
+results$p.value 
+results$estimate
+```
+

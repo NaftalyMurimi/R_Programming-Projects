@@ -71,7 +71,7 @@ my_heart <- read.table(file = heart, header = T, sep = ',')
 chol_levels <- t.test(Chol~Fbs, data=my_heart)
 
 chol_levels$statistic
-chol_levels$p.value
+chol_levels$p.value<0.05
 
 # > chol_levels$statistic
 # t 

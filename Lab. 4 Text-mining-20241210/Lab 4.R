@@ -103,7 +103,7 @@ tweets$created <- gsub("-", "/", tweets$created) # musi byÄ‡ na zmienna adresujÄ
 head(tweets)
 
 # c) Create a new column containing only the year of publication.
-tweets$year <- gsub("^(\\d{4}).*", "\\1", tweets$created)
+tweets$year <- gsub("^(\\d{4}).+", "\\1", tweets$created)
 head(tweets)
 # ^: Asserts the start of the string.
 # (\\d{4}): Captures the first four digits (the year, e.g., 2013) into a group.

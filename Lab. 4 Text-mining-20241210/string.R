@@ -1,6 +1,7 @@
 x <- c("abc", "bcd", "cde", "def", "gbcd")
 # Find indices of elements containing "bc"
-grep("bc", x)
+grep("bc", x, invert = TRUE, value = TRUE)
+grep("bc",x)
 # Output: [1] 1 2
 # Return matching values
 grep("bc", x, value = TRUE)
@@ -10,7 +11,7 @@ grep("BC", x, ignore.case = TRUE)
 # Output: [1] 1 2
 
 
-x <- c("ablc", "bcd", "bcdebc", "bbbbdefc")
+x <- c("ablc", "bcd", "bcdebc", "bcbbbcdefc")
 # Replace first match
 sub("bc", "kk", x)
 # Output: [1] "agh" "ghd" "cde" "def"
@@ -31,7 +32,7 @@ regexpr("isss", a)
 # Match groups
 a <- "Misksikkssippi contains a palindrome isksissi."
 regexec(".(pp)", a)
-
+gregexpr("ss", a)
 a <- "My"
 b <- "string"
 
@@ -48,4 +49,5 @@ paste0(a, b)
 paste(a, b, sep = ".")
 # Output: "My.string"
 
+n=seq(4,70)
 
